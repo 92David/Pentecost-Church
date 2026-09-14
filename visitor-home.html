@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pentecost Church | Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body data-page="visitor-home">
+    <header class="site-header">
+      <div class="container nav-shell">
+        <div class="brand-block">
+          <div class="brand-mark">P</div>
+          <div>
+            <p class="eyebrow">Welcome</p>
+            <h1>Pentecost Church</h1>
+          </div>
+        </div>
+        <nav class="top-nav" aria-label="Main navigation">
+          <a href="visitor-home.html" class="active" aria-current="page">Home</a>
+          <a href="about.html">About</a>
+          <a href="services.html">Services</a>
+          <a href="sermons.html">Sermons</a>
+          <a href="events.html">Events</a>
+          <a href="ministries.html">Ministries</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-layout">
+          <div class="hero-copy">
+            <p class="eyebrow accent">Growing in faith together</p>
+            <h2>Encounter God, build community, and serve with purpose.</h2>
+            <p>
+              We are a vibrant church family centered on worship, prayer, discipleship,
+              and reaching people with the love of Jesus Christ.
+            </p>
+            <div class="cta-row">
+              <a class="primary-btn" href="services.html">Plan Your Visit</a>
+            </div>
+          </div>
+
+          <div class="hero-visual" aria-label="Church worship slides">
+            <div class="hero-slide active" style="--slide-image: url('pic/reflectivecrosswelcome.jpg');">
+              <div class="slide-content">
+                <span class="slide-badge">Welcome</span>
+                <h3>Come worship with us.</h3>
+              </div>
+            </div>
+
+            <div class="hero-slide" style="--slide-image: url('pic/church-9965059_1280.jpg');">
+              <div class="slide-content">
+                <span class="slide-badge">Gather</span>
+                <h3>Grow in faith together.</h3>
+              </div>
+            </div>
+
+            <div class="hero-slide" style="--slide-image: url('pic/Praise-and-Worship-58b5c8ba5f9b586046caf1fa.jpg');">
+              <div class="slide-content">
+                <span class="slide-badge">Praise</span>
+                <h3>Lift your voice in worship.</h3>
+              </div>
+            </div>
+
+            <div class="hero-slide" style="--slide-image: url('pic/stock-photo-welcome-let-us-worship-the-king-of-kings-word-and-in-church-christian-worship-with-singing-to-god-1021166185.jpg');">
+              <div class="slide-content">
+                <span class="slide-badge">Service</span>
+                <h3>Experience God’s presence.</h3>
+              </div>
+            </div>
+
+            <div class="hero-overlay-card">
+              <div class="info-tag">This Week</div>
+              <h3>Sunday Worship</h3>
+              <p>9:00 AM • 11:00 AM • 6:30 PM</p>
+              <ul>
+                <li>Prayer & Praise</li>
+                <li>Scripture teaching</li>
+                <li>Community fellowship</li>
+              </ul>
+            </div>
+
+            <div class="hero-dots" aria-label="Carousel controls">
+              <button class="hero-dot active" type="button" aria-label="Show slide 1"></button>
+              <button class="hero-dot" type="button" aria-label="Show slide 2"></button>
+              <button class="hero-dot" type="button" aria-label="Show slide 3"></button>
+              <button class="hero-dot" type="button" aria-label="Show slide 4"></button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="home-search-section">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Quick search</p>
+            <h3>Find sermons, pages, and resources</h3>
+          </div>
+
+          <div class="site-search home-search">
+            <input
+              id="globalSiteSearch"
+              type="search"
+              placeholder="Search the church website..."
+              aria-label="Search the church website"
+            />
+            <div id="siteSearchResults" class="site-search-results" aria-live="polite"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="home-giving-section">
+        <div class="container">
+          <div class="section-heading giving-heading">
+            <div>
+              <p class="eyebrow">Giving</p>
+              <h3>Support the mission and ministry of Pentecost Church</h3>
+            </div>
+            <button class="giving-toggle-btn" type="button" id="toggleGivingSection" aria-expanded="false">
+              View Giving
+            </button>
+          </div>
+
+          <div class="giving-content">
+            <div class="giving-tabs" role="tablist" aria-label="Giving types">
+            <button class="giving-tab" type="button" role="tab" aria-selected="false" aria-controls="giving-panel-tithe" id="giving-tab-tithe" data-giving-tab="Tithe">Tithe</button>
+            <button class="giving-tab" type="button" role="tab" aria-selected="false" aria-controls="giving-panel-general-offering" id="giving-tab-general-offering" data-giving-tab="General Offering">General Offering</button>
+            <button class="giving-tab" type="button" role="tab" aria-selected="false" aria-controls="giving-panel-thanksgiving" id="giving-tab-thanksgiving" data-giving-tab="Thanksgiving Offering">Thanksgiving</button>
+            <button class="giving-tab" type="button" role="tab" aria-selected="false" aria-controls="giving-panel-missions" id="giving-tab-missions" data-giving-tab="Missions Offering">Missions</button>
+            <button class="giving-tab" type="button" role="tab" aria-selected="false" aria-controls="giving-panel-building" id="giving-tab-building" data-giving-tab="Building/Development">Building</button>
+            <button class="giving-tab" type="button" role="tab" aria-selected="false" aria-controls="giving-panel-benevolence" id="giving-tab-benevolence" data-giving-tab="Benevolence/Welfare">Benevolence</button>
+            <button class="giving-tab" type="button" role="tab" aria-selected="false" aria-controls="giving-panel-special" id="giving-tab-special" data-giving-tab="Special Offering">Special</button>
+            <button class="giving-tab" type="button" role="tab" aria-selected="false" aria-controls="giving-panel-other" id="giving-tab-other" data-giving-tab="Other Giving">Other</button>
+          </div>
+
+          <div class="giving-tab-panels">
+            <article class="giving-card giving-panel" id="giving-panel-tithe" role="tabpanel" aria-labelledby="giving-tab-tithe" data-giving-panel="Tithe">
+              <div class="giving-card-header">
+                <h4>Tithe</h4>
+                <span>First Fruits</span>
+              </div>
+
+              <ul class="giving-points">
+                <li>Honors God’s faithfulness and generosity.</li>
+                <li>Helps sustain church operations and discipleship.</li>
+                <li>Supports pastoral care, worship, and ministry outreach.</li>
+              </ul>
+
+              <form class="giving-form" data-giving-type="Tithe">
+                <label class="giving-form-field">
+                  <span>Amount</span>
+                  <input type="number" min="1" step="0.01" placeholder="Enter amount" />
+                </label>
+
+                <label class="giving-form-field">
+                  <span>Payment Method</span>
+                  <select>
+                    <option value="">Select payment method</option>
+                    <option>Mobile Money</option>
+                    <option>Bank Transfer</option>
+                    <option>Card Payment</option>
+                    <option>Cash</option>
+                  </select>
+                </label>
+
+                <button type="submit" class="submit-prayer-btn">Give to Tithe</button>
+                <p class="giving-form-status"></p>
+              </form>
+            </article>
+
+            <article class="giving-card giving-panel" id="giving-panel-general-offering" role="tabpanel" aria-labelledby="giving-tab-general-offering" data-giving-panel="General Offering">
+              <div class="giving-card-header">
+                <h4>General Offering</h4>
+                <span>Church Support</span>
+              </div>
+
+              <ul class="giving-points">
+                <li>Helps meet the everyday needs of the church.</li>
+                <li>Supports prayer meetings, preaching, and fellowship.</li>
+                <li>Strengthens the overall mission of the church family.</li>
+              </ul>
+
+              <form class="giving-form" data-giving-type="General Offering">
+                <label class="giving-form-field">
+                  <span>Amount</span>
+                  <input type="number" min="1" step="0.01" placeholder="Enter amount" />
+                </label>
+
+                <label class="giving-form-field">
+                  <span>Payment Method</span>
+                  <select>
+                    <option value="">Select payment method</option>
+                    <option>Mobile Money</option>
+                    <option>Bank Transfer</option>
+                    <option>Card Payment</option>
+                    <option>Cash</option>
+                  </select>
+                </label>
+
+                <button type="submit" class="submit-prayer-btn">Give to General Offering</button>
+                <p class="giving-form-status"></p>
+              </form>
+            </article>
+
+            <article class="giving-card giving-panel" id="giving-panel-thanksgiving" role="tabpanel" aria-labelledby="giving-tab-thanksgiving" data-giving-panel="Thanksgiving Offering">
+              <div class="giving-card-header">
+                <h4>Thanksgiving Offering</h4>
+                <span>Gratitude</span>
+              </div>
+
+              <ul class="giving-points">
+                <li>Expresses gratitude for God’s goodness and mercy.</li>
+                <li>Celebrates answered prayers and divine provision.</li>
+                <li>Encourages a heart of worship and thanksgiving.</li>
+              </ul>
+
+              <form class="giving-form" data-giving-type="Thanksgiving Offering">
+                <label class="giving-form-field">
+                  <span>Amount</span>
+                  <input type="number" min="1" step="0.01" placeholder="Enter amount" />
+                </label>
+
+                <label class="giving-form-field">
+                  <span>Payment Method</span>
+                  <select>
+                    <option value="">Select payment method</option>
+                    <option>Mobile Money</option>
+                    <option>Bank Transfer</option>
+                    <option>Card Payment</option>
+                    <option>Cash</option>
+                  </select>
+                </label>
+
+                <button type="submit" class="submit-prayer-btn">Give to Thanksgiving Offering</button>
+                <p class="giving-form-status"></p>
+              </form>
+            </article>
+
+            <article class="giving-card giving-panel" id="giving-panel-missions" role="tabpanel" aria-labelledby="giving-tab-missions" data-giving-panel="Missions Offering">
+              <div class="giving-card-header">
+                <h4>Missions Offering</h4>
+                <span>Reach the World</span>
+              </div>
+
+              <ul class="giving-points">
+                <li>Supports evangelism and global mission outreach.</li>
+                <li>Helps churches, leaders, and communities in need.</li>
+                <li>Advances the gospel across cities and nations.</li>
+              </ul>
+
+              <form class="giving-form" data-giving-type="Missions Offering">
+                <label class="giving-form-field">
+                  <span>Amount</span>
+                  <input type="number" min="1" step="0.01" placeholder="Enter amount" />
+                </label>
+
+                <label class="giving-form-field">
+                  <span>Payment Method</span>
+                  <select>
+                    <option value="">Select payment method</option>
+                    <option>Mobile Money</option>
+                    <option>Bank Transfer</option>
+                    <option>Card Payment</option>
+                    <option>Cash</option>
+                  </select>
+                </label>
+
+                <button type="submit" class="submit-prayer-btn">Give to Missions Offering</button>
+                <p class="giving-form-status"></p>
+              </form>
+            </article>
+
+            <article class="giving-card giving-panel" id="giving-panel-building" role="tabpanel" aria-labelledby="giving-tab-building" data-giving-panel="Building/Development">
+              <div class="giving-card-header">
+                <h4>Building/Development</h4>
+                <span>Church Growth</span>
+              </div>
+
+              <ul class="giving-points">
+                <li>Contributes to church expansion and development projects.</li>
+                <li>Supports safer, better, and more welcoming spaces.</li>
+                <li>Helps prepare facilities for future generations.</li>
+              </ul>
+
+              <form class="giving-form" data-giving-type="Building/Development">
+                <label class="giving-form-field">
+                  <span>Amount</span>
+                  <input type="number" min="1" step="0.01" placeholder="Enter amount" />
+                </label>
+
+                <label class="giving-form-field">
+                  <span>Payment Method</span>
+                  <select>
+                    <option value="">Select payment method</option>
+                    <option>Mobile Money</option>
+                    <option>Bank Transfer</option>
+                    <option>Card Payment</option>
+                    <option>Cash</option>
+                  </select>
+                </label>
+
+                <button type="submit" class="submit-prayer-btn">Give to Building/Development</button>
+                <p class="giving-form-status"></p>
+              </form>
+            </article>
+
+            <article class="giving-card giving-panel" id="giving-panel-benevolence" role="tabpanel" aria-labelledby="giving-tab-benevolence" data-giving-panel="Benevolence/Welfare">
+              <div class="giving-card-header">
+                <h4>Benevolence/Welfare</h4>
+                <span>Care & Support</span>
+              </div>
+
+              <ul class="giving-points">
+                <li>Provides help for families and individuals in need.</li>
+                <li>Supports emergency and welfare assistance initiatives.</li>
+                <li>Shows Christ’s love through practical care.</li>
+              </ul>
+
+              <form class="giving-form" data-giving-type="Benevolence/Welfare">
+                <label class="giving-form-field">
+                  <span>Amount</span>
+                  <input type="number" min="1" step="0.01" placeholder="Enter amount" />
+                </label>
+
+                <label class="giving-form-field">
+                  <span>Payment Method</span>
+                  <select>
+                    <option value="">Select payment method</option>
+                    <option>Mobile Money</option>
+                    <option>Bank Transfer</option>
+                    <option>Card Payment</option>
+                    <option>Cash</option>
+                  </select>
+                </label>
+
+                <button type="submit" class="submit-prayer-btn">Give to Benevolence/Welfare</button>
+                <p class="giving-form-status"></p>
+              </form>
+            </article>
+
+            <article class="giving-card giving-panel" id="giving-panel-special" role="tabpanel" aria-labelledby="giving-tab-special" data-giving-panel="Special Offering">
+              <div class="giving-card-header">
+                <h4>Special Offering</h4>
+                <span>Seasonal Support</span>
+              </div>
+
+              <ul class="giving-points">
+                <li>Supports special church initiatives and campaigns.</li>
+                <li>Helps fund events, outreach, and community programs.</li>
+                <li>Strengthens combined effort during special moments.</li>
+              </ul>
+
+              <form class="giving-form" data-giving-type="Special Offering">
+                <label class="giving-form-field">
+                  <span>Amount</span>
+                  <input type="number" min="1" step="0.01" placeholder="Enter amount" />
+                </label>
+
+                <label class="giving-form-field">
+                  <span>Payment Method</span>
+                  <select>
+                    <option value="">Select payment method</option>
+                    <option>Mobile Money</option>
+                    <option>Bank Transfer</option>
+                    <option>Card Payment</option>
+                    <option>Cash</option>
+                  </select>
+                </label>
+
+                <button type="submit" class="submit-prayer-btn">Give to Special Offering</button>
+                <p class="giving-form-status"></p>
+              </form>
+            </article>
+
+            <article class="giving-card giving-panel" id="giving-panel-other" role="tabpanel" aria-labelledby="giving-tab-other" data-giving-panel="Other Giving">
+              <div class="giving-card-header">
+                <h4>Other Giving</h4>
+                <span>Personal Contribution</span>
+              </div>
+
+              <ul class="giving-points">
+                <li>For additional contributions outside the listed categories.</li>
+                <li>Lets you support the church in a way that fits your need.</li>
+                <li>Useful for personalized acts of generosity and support.</li>
+              </ul>
+
+              <form class="giving-form" data-giving-type="Other Giving">
+                <label class="giving-form-field">
+                  <span>Amount</span>
+                  <input type="number" min="1" step="0.01" placeholder="Enter amount" />
+                </label>
+
+                <label class="giving-form-field">
+                  <span>Payment Method</span>
+                  <select>
+                    <option value="">Select payment method</option>
+                    <option>Mobile Money</option>
+                    <option>Bank Transfer</option>
+                    <option>Card Payment</option>
+                    <option>Cash</option>
+                  </select>
+                </label>
+
+                <button type="submit" class="submit-prayer-btn">Give to Other Giving</button>
+                <p class="giving-form-status"></p>
+              </form>
+            </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="home-contact-section">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Contact</p>
+            <h3>Reach out to Pentecost Church</h3>
+          </div>
+
+          <div class="contact-layout">
+            <div class="contact-details">
+              <div class="contact-card">
+                <h4>Church Address</h4>
+                <p>123 Grace Avenue<br />City, State</p>
+              </div>
+
+              <div class="contact-card">
+                <h4>Phone</h4>
+                <p>(123) 456-7890</p>
+              </div>
+
+              <div class="contact-card">
+                <h4>Email</h4>
+                <p>hello@pentecostchurch.org</p>
+              </div>
+
+              <div class="contact-card">
+                <h4>Opening Hours</h4>
+                <p>Monday - Friday<br />9:00 AM - 5:00 PM</p>
+              </div>
+
+              <div class="contact-card">
+                <h4>Sunday Service Times</h4>
+                <p>9:00 AM<br />11:00 AM<br />6:30 PM</p>
+              </div>
+
+              <div class="contact-card map-card">
+                <h4>Map</h4>
+                <div class="map-placeholder" aria-label="Map location preview">
+                  <span>Map View</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-form-card">
+              <h4>Contact Form</h4>
+              <form class="contact-form" id="contactForm">
+                <div class="contact-form-grid">
+                  <label class="contact-form-field">
+                    <span>Name</span>
+                    <input type="text" name="name" placeholder="Enter your name" required />
+                  </label>
+
+                  <label class="contact-form-field">
+                    <span>Email</span>
+                    <input type="email" name="email" placeholder="Enter your email" required />
+                  </label>
+
+                  <label class="contact-form-field full-width">
+                    <span>Subject</span>
+                    <input type="text" name="subject" placeholder="Enter subject" required />
+                  </label>
+
+                  <label class="contact-form-field full-width">
+                    <span>Message</span>
+                    <textarea name="message" placeholder="Write your message" required></textarea>
+                  </label>
+                </div>
+
+                <button type="submit" class="submit-prayer-btn">Send Message</button>
+                <p class="form-status" id="contactFormStatus"></p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="site-map">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Website flow</p>
+            <h3>Explore the church journey</h3>
+          </div>
+
+          <div class="flow-grid">
+            <div class="flow-column">
+              <div class="flow-label">Visitor</div>
+              <div class="flow-card active">
+                <h4>Home Page</h4>
+                <a href="about.html">About</a>
+                <a href="services.html">Services</a>
+                <a href="sermons.html">Sermons</a>
+                <a href="events.html">Events</a>
+                <a href="ministries.html">Ministries</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="quick-links">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Discover</p>
+            <h3>Helpful pages</h3>
+          </div>
+
+          <div class="card-grid">
+            <article class="info-card">
+              <span class="card-icon">✝️</span>
+              <h4>About</h4>
+              <p>Learn about the church’s history, vision, mission, and beliefs.</p>
+              <a href="about.html">Read more</a>
+            </article>
+
+            <article class="info-card">
+              <span class="card-icon">⛪</span>
+              <h4>Services</h4>
+              <p>Explore worship gatherings, Bible study, and prayer ministries.</p>
+              <a href="services.html">View services</a>
+            </article>
+
+            <article class="info-card">
+              <span class="card-icon">🎧</span>
+              <h4>Sermons</h4>
+              <p>Watch, listen, and reflect on messages from the pulpit.</p>
+              <a href="sermons.html">Listen now</a>
+            </article>
+
+            <article class="info-card">
+              <span class="card-icon">📅</span>
+              <h4>Events</h4>
+              <p>Stay connected with upcoming events, conferences, and programs.</p>
+              <a href="events.html">See calendar</a>
+            </article>
+
+            <article class="info-card">
+              <span class="card-icon">🤝</span>
+              <h4>Ministries</h4>
+              <p>Connect with groups for youth, women, men, children, and choir.</p>
+              <a href="ministries.html">Join a ministry</a>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-shell">
+        <p>© <span id="year"></span> Pentecost Church</p>
+        <p>123 Grace Avenue • City, State</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

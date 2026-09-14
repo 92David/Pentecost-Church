@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pentecost Church | Prayer Request</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body data-page="prayer-request">
+    <header class="site-header">
+      <div class="container nav-shell">
+        <div class="brand-block">
+          <div class="brand-mark">P</div>
+          <div>
+            <p class="eyebrow">Welcome</p>
+            <h1>Pentecost Church</h1>
+          </div>
+        </div>
+        <nav class="top-nav" aria-label="Main navigation">
+          <a href="visitor-home.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="services.html">Services</a>
+          <a href="sermons.html">Sermons</a>
+          <a href="events.html">Events</a>
+          <a href="ministries.html">Ministries</a>
+          <a href="member-area.html" class="member-link">Member Area</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="page-header">
+        <div class="container">
+          <p class="eyebrow">Prayer Request</p>
+          <h2>Share your prayer needs with the church family.</h2>
+        </div>
+      </section>
+
+      <section class="page-section">
+        <div class="container prayer-request-shell">
+          <form class="prayer-form-card" id="prayerRequestForm">
+            <div class="prayer-form-header">
+              <p class="eyebrow accent">Form</p>
+              <h3>Prayer Request</h3>
+            </div>
+
+            <div class="prayer-form-grid">
+              <label class="prayer-form-field">
+                <span>Name</span>
+                <input type="text" name="name" placeholder="Enter your name" required />
+              </label>
+
+              <label class="prayer-form-field">
+                <span>Email</span>
+                <input type="email" name="email" placeholder="Enter your email" required />
+              </label>
+
+              <label class="prayer-form-field">
+                <span>Phone</span>
+                <input type="tel" name="phone" placeholder="Enter your phone number" />
+              </label>
+
+              <label class="prayer-form-field">
+                <span>Prayer Category</span>
+                <select name="category" required>
+                  <option value="Family">Family</option>
+                  <option value="Health">Health</option>
+                  <option value="Education">Education</option>
+                  <option value="Employment">Employment</option>
+                  <option value="Finances">Finances</option>
+                  <option value="Marriage">Marriage</option>
+                  <option value="Spiritual Growth">Spiritual Growth</option>
+                  <option value="Other">Other</option>
+                </select>
+              </label>
+            </div>
+
+            <label class="prayer-form-field full-width">
+              <span>Prayer Request</span>
+              <textarea name="request" rows="6" placeholder="Write your prayer request here..." required></textarea>
+            </label>
+
+            <label class="privacy-field">
+              <input type="checkbox" name="private" />
+              <span>Keep my request private</span>
+            </label>
+
+            <button type="submit" class="submit-prayer-btn">Submit Prayer Request</button>
+            <p id="prayerRequestMessage" class="form-status" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-shell">
+        <p>© <span id="year"></span> Pentecost Church</p>
+        <p>123 Grace Avenue • City, State</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

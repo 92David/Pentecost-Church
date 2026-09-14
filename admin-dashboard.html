@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pentecost Church | Admin Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body data-page="admin-dashboard">
+    <header class="site-header">
+      <div class="container nav-shell">
+        <div class="brand-block">
+          <div class="brand-mark">P</div>
+          <div>
+            <p class="eyebrow">Welcome</p>
+            <h1>Pentecost Church</h1>
+          </div>
+        </div>
+        <nav class="top-nav" aria-label="Main navigation">
+          <a href="visitor-home.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="services.html">Services</a>
+          <a href="sermons.html">Sermons</a>
+          <a href="events.html">Events</a>
+          <a href="ministries.html">Ministries</a>
+          <a href="admin-login.html" class="member-link active" aria-current="page">Admin</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="page-header">
+        <div class="container">
+          <p class="eyebrow">Admin Dashboard</p>
+          <h2 id="adminGreeting">Welcome, Admin.</h2>
+        </div>
+      </section>
+
+      <section class="page-section">
+        <div class="container">
+          <div class="admin-sidebar-layout">
+            <aside class="admin-sidebar">
+              <h3>Dashboard</h3>
+              <ul>
+                <li><a href="#dashboard">Dashboard</a></li>
+                <li><a href="#members">Members</a></li>
+                <li><a href="#sermons">Sermons</a></li>
+                <li><a href="#events">Events</a></li>
+                <li><a href="#ministries">Ministries</a></li>
+                <li><a href="#bible-verses">Bible Verses</a></li>
+                <li><a href="#daily-quotes">Daily Quotes</a></li>
+                <li><a href="#prayer-requests">Prayer Requests</a></li>
+                <li><a href="#offerings">Offerings/Giving</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#announcements">Announcements</a></li>
+                <li><a href="#website-settings">Website Settings</a></li>
+              </ul>
+            </aside>
+
+            <div class="admin-content">
+              <div id="dashboard" class="admin-panel">
+                <h3>Dashboard</h3>
+                <div class="admin-stats-grid">
+                  <article class="admin-stat-card">
+                    <span>Members</span>
+                    <strong id="adminMemberCount">0</strong>
+                  </article>
+                  <article class="admin-stat-card">
+                    <span>Sermons</span>
+                    <strong id="adminSermonCount">0</strong>
+                  </article>
+                  <article class="admin-stat-card">
+                    <span>Events</span>
+                    <strong id="adminEventCount">0</strong>
+                  </article>
+                  <article class="admin-stat-card">
+                    <span>Prayer Requests</span>
+                    <strong id="adminPrayerCount">0</strong>
+                  </article>
+                </div>
+              </div>
+
+              <div id="members" class="admin-panel">
+                <h3>Members</h3>
+                <div class="admin-list-box">
+                  <ul id="adminMembersList">
+                    <li>Grace Thompson</li>
+                    <li>Pastor David</li>
+                    <li>Member User</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div id="sermons" class="admin-panel">
+                <h3>Sermons</h3>
+                <div class="admin-list-box">
+                  <ul id="adminSermonsList">
+                    <li>Walking by Faith</li>
+                    <li>Power in Prayer</li>
+                    <li>Living in God’s Presence</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div id="events" class="admin-panel">
+                <h3>Events</h3>
+                <div class="admin-list-box">
+                  <ul id="adminEventsList">
+                    <li>Sunday Worship</li>
+                    <li>Prayer Meeting</li>
+                    <li>Church Conference</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div id="ministries" class="admin-panel">
+                <h3>Ministries</h3>
+                <div class="admin-list-box">
+                  <ul id="adminMinistriesList">
+                    <li>Youth Ministry</li>
+                    <li>Women’s Ministry</li>
+                    <li>Men’s Ministry</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div id="bible-verses" class="admin-panel">
+                <h3>Bible Verses</h3>
+                <div class="admin-list-box">
+                  <ul id="adminBibleVersesList">
+                    <li>Psalm 23:1</li>
+                    <li>Romans 15:13</li>
+                    <li>Joshua 1:9</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div id="daily-quotes" class="admin-panel">
+                <h3>Daily Quotes</h3>
+                <div class="admin-list-box">
+                  <ul id="adminDailyQuotesList">
+                    <li>Faith moves mountains</li>
+                    <li>Pray with expectation</li>
+                    <li>God is faithful</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div id="prayer-requests" class="admin-panel">
+                <h3>Prayer Requests</h3>
+                <div class="admin-list-box">
+                  <ul id="adminPrayerRequestsList">
+                    <li>Family healing</li>
+                    <li>Work guidance</li>
+                    <li>Community outreach</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div id="offerings" class="admin-panel">
+                <h3>Offerings/Giving</h3>
+                <div class="admin-list-box">
+                  <ul id="adminOfferingsList">
+                    <li>Tithe</li>
+                    <li>General Offering</li>
+                    <li>Thanksgiving Offering</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div id="gallery" class="admin-panel">
+                <h3>Gallery</h3>
+                <div class="admin-list-box">
+                  <ul id="adminGalleryList">
+                    <li>Sunday Worship Gallery</li>
+                    <li>Youth Event Photos</li>
+                    <li>Prayer Night</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div id="announcements" class="admin-panel">
+                <h3>Announcements</h3>
+                <div class="admin-list-box">
+                  <ul id="adminAnnouncementsList">
+                    <li>Midweek Prayer Service</li>
+                    <li>Missionary Outreach</li>
+                    <li>Leadership Meeting</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div id="website-settings" class="admin-panel">
+                <h3>Website Settings</h3>
+                <div class="admin-list-box">
+                  <ul id="adminSettingsList">
+                    <li>Theme Settings</li>
+                    <li>Homepage Hero Content</li>
+                    <li>Footer Contact Info</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-shell">
+        <p>© <span id="year"></span> Pentecost Church</p>
+        <p>123 Grace Avenue • City, State</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

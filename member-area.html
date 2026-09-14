@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pentecost Church | Member Area</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body data-page="member-area">
+    <header class="site-header">
+      <div class="container nav-shell">
+        <div class="brand-block">
+          <div class="brand-mark">P</div>
+          <div>
+            <p class="eyebrow">Welcome</p>
+            <h1>Pentecost Church</h1>
+          </div>
+        </div>
+        <nav class="top-nav" aria-label="Main navigation">
+          <a href="visitor-home.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="services.html">Services</a>
+          <a href="sermons.html">Sermons</a>
+          <a href="events.html">Events</a>
+          <a href="ministries.html">Ministries</a>
+          <a href="member-area.html" class="member-link active" aria-current="page">Member Area</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="page-header">
+        <div class="container">
+          <p class="eyebrow">Member Area</p>
+          <h2>Member login and dashboard.</h2>
+        </div>
+      </section>
+
+      <section class="page-section">
+        <div class="container">
+          <div class="member-login-card">
+            <div class="member-login-header">
+              <p class="eyebrow">Member Login</p>
+              <h3>Welcome back</h3>
+            </div>
+
+            <form class="member-login-form">
+              <label>
+                <span>Email</span>
+                <input type="email" placeholder="member@email.com" />
+              </label>
+              <label>
+                <span>Password</span>
+                <input type="password" placeholder="Enter password" />
+              </label>
+              <button type="submit" class="primary-btn">Login</button>
+            </form>
+
+            <p class="admin-login-link-helper">
+              Admin? <a href="admin-login.html">Go to Admin Login</a>
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-shell">
+        <p>© <span id="year"></span> Pentecost Church</p>
+        <p>123 Grace Avenue • City, State</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

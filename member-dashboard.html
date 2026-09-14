@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pentecost Church | Member Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body data-page="member-dashboard">
+    <header class="site-header">
+      <div class="container nav-shell">
+        <div class="brand-block">
+          <div class="brand-mark">P</div>
+          <div>
+            <p class="eyebrow">Welcome</p>
+            <h1>Pentecost Church</h1>
+          </div>
+        </div>
+        <nav class="top-nav" aria-label="Main navigation">
+          <a href="visitor-home.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="services.html">Services</a>
+          <a href="sermons.html">Sermons</a>
+          <a href="events.html">Events</a>
+          <a href="ministries.html">Ministries</a>
+          <a href="member-area.html" class="member-link active" aria-current="page">Member Area</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="page-header">
+        <div class="container">
+          <p class="eyebrow">Member Dashboard</p>
+          <h2 id="memberGreeting">Welcome back, Member.</h2>
+        </div>
+      </section>
+
+      <section class="page-section">
+        <div class="container">
+          <div class="member-profile-summary">
+            <article class="profile-card">
+              <p class="eyebrow">Profile</p>
+              <h3 id="memberName">Member Name</h3>
+              <p id="memberEmail">member@email.com</p>
+              <p id="memberMinistry">Ministry</p>
+            </article>
+
+            <article class="profile-card">
+              <p class="eyebrow">Quick Overview</p>
+              <div class="mini-stats">
+                <div>
+                  <span>Next Event</span>
+                  <strong id="nextEvent">-</strong>
+                </div>
+                <div>
+                  <span>Prayer Requests</span>
+                  <strong id="prayerCount">0</strong>
+                </div>
+                <div>
+                  <span>Giving Total</span>
+                  <strong id="givingTotal">$0</strong>
+                </div>
+                <div>
+                  <span>Notifications</span>
+                  <strong id="notificationCount">0</strong>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="member-dashboard">
+            <article class="dashboard-card">
+              <h3>Church Events</h3>
+              <ul id="churchEventList">
+                <li>Loading your events...</li>
+              </ul>
+            </article>
+
+            <article class="dashboard-card">
+              <h3>Prayer Requests</h3>
+              <ul id="prayerRequestList">
+                <li>Loading your requests...</li>
+              </ul>
+            </article>
+
+            <article class="dashboard-card">
+              <h3>Giving History</h3>
+              <ul id="givingHistoryList">
+                <li>Loading your giving history...</li>
+              </ul>
+            </article>
+
+            <article class="dashboard-card">
+              <h3>Ministry</h3>
+              <ul id="ministryList">
+                <li>Loading ministry details...</li>
+              </ul>
+            </article>
+
+            <article class="dashboard-card">
+              <h3>Sermons</h3>
+              <ul id="sermonList">
+                <li>Loading sermons...</li>
+              </ul>
+            </article>
+
+            <article class="dashboard-card">
+              <h3>Notifications</h3>
+              <ul id="notificationList">
+                <li>Loading notifications...</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-shell">
+        <p>© <span id="year"></span> Pentecost Church</p>
+        <p>123 Grace Avenue • City, State</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
