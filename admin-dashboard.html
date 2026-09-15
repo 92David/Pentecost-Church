@@ -39,6 +39,7 @@
         <div class="container">
           <p class="eyebrow">Admin Dashboard</p>
           <h2 id="adminGreeting">Welcome, Admin.</h2>
+          <p id="adminLoadStatus" class="form-status" aria-live="polite"></p>
         </div>
       </section>
 
@@ -66,6 +67,7 @@
             <div class="admin-content">
               <div id="dashboard" class="admin-panel">
                 <h3>Dashboard</h3>
+                <p class="admin-help">Edit church content below. Public pages load the same database and CSV snapshots in <code>backend/data</code>.</p>
                 <div class="admin-stats-grid">
                   <article class="admin-stat-card">
                     <span>Members</span>
@@ -89,123 +91,33 @@
               <div id="members" class="admin-panel">
                 <h3>Members</h3>
                 <div class="admin-list-box">
-                  <ul id="adminMembersList">
-                    <li>Grace Thompson</li>
-                    <li>Pastor David</li>
-                    <li>Member User</li>
-                  </ul>
+                  <ul id="adminMembersList"></ul>
                 </div>
               </div>
 
-              <div id="sermons" class="admin-panel">
-                <h3>Sermons</h3>
-                <div class="admin-list-box">
-                  <ul id="adminSermonsList">
-                    <li>Walking by Faith</li>
-                    <li>Power in Prayer</li>
-                    <li>Living in God’s Presence</li>
-                  </ul>
-                </div>
-              </div>
-
-              <div id="events" class="admin-panel">
-                <h3>Events</h3>
-                <div class="admin-list-box">
-                  <ul id="adminEventsList">
-                    <li>Sunday Worship</li>
-                    <li>Prayer Meeting</li>
-                    <li>Church Conference</li>
-                  </ul>
-                </div>
-              </div>
-
-              <div id="ministries" class="admin-panel">
-                <h3>Ministries</h3>
-                <div class="admin-list-box">
-                  <ul id="adminMinistriesList">
-                    <li>Youth Ministry</li>
-                    <li>Women’s Ministry</li>
-                    <li>Men’s Ministry</li>
-                  </ul>
-                </div>
-              </div>
-
-              <div id="bible-verses" class="admin-panel">
-                <h3>Bible Verses</h3>
-                <div class="admin-list-box">
-                  <ul id="adminBibleVersesList">
-                    <li>Psalm 23:1</li>
-                    <li>Romans 15:13</li>
-                    <li>Joshua 1:9</li>
-                  </ul>
-                </div>
-              </div>
-
-              <div id="daily-quotes" class="admin-panel">
-                <h3>Daily Quotes</h3>
-                <div class="admin-list-box">
-                  <ul id="adminDailyQuotesList">
-                    <li>Faith moves mountains</li>
-                    <li>Pray with expectation</li>
-                    <li>God is faithful</li>
-                  </ul>
-                </div>
-              </div>
+              <div id="sermons" class="admin-panel" data-cms="sermons"></div>
+              <div id="events" class="admin-panel" data-cms="events"></div>
+              <div id="ministries" class="admin-panel" data-cms="ministries"></div>
+              <div id="bible-verses" class="admin-panel" data-cms="bible-verses"></div>
+              <div id="daily-quotes" class="admin-panel" data-cms="quotes"></div>
 
               <div id="prayer-requests" class="admin-panel">
                 <h3>Prayer Requests</h3>
                 <div class="admin-list-box">
-                  <ul id="adminPrayerRequestsList">
-                    <li>Family healing</li>
-                    <li>Work guidance</li>
-                    <li>Community outreach</li>
-                  </ul>
+                  <ul id="adminPrayerRequestsList"></ul>
                 </div>
               </div>
 
               <div id="offerings" class="admin-panel">
                 <h3>Offerings/Giving</h3>
                 <div class="admin-list-box">
-                  <ul id="adminOfferingsList">
-                    <li>Tithe</li>
-                    <li>General Offering</li>
-                    <li>Thanksgiving Offering</li>
-                  </ul>
+                  <ul id="adminOfferingsList"></ul>
                 </div>
               </div>
 
-              <div id="gallery" class="admin-panel">
-                <h3>Gallery</h3>
-                <div class="admin-list-box">
-                  <ul id="adminGalleryList">
-                    <li>Sunday Worship Gallery</li>
-                    <li>Youth Event Photos</li>
-                    <li>Prayer Night</li>
-                  </ul>
-                </div>
-              </div>
-
-              <div id="announcements" class="admin-panel">
-                <h3>Announcements</h3>
-                <div class="admin-list-box">
-                  <ul id="adminAnnouncementsList">
-                    <li>Midweek Prayer Service</li>
-                    <li>Missionary Outreach</li>
-                    <li>Leadership Meeting</li>
-                  </ul>
-                </div>
-              </div>
-
-              <div id="website-settings" class="admin-panel">
-                <h3>Website Settings</h3>
-                <div class="admin-list-box">
-                  <ul id="adminSettingsList">
-                    <li>Theme Settings</li>
-                    <li>Homepage Hero Content</li>
-                    <li>Footer Contact Info</li>
-                  </ul>
-                </div>
-              </div>
+              <div id="gallery" class="admin-panel" data-cms="gallery"></div>
+              <div id="announcements" class="admin-panel" data-cms="announcements"></div>
+              <div id="website-settings" class="admin-panel" data-cms="settings"></div>
             </div>
           </div>
         </div>

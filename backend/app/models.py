@@ -174,6 +174,13 @@ class Contact(Base):
     message = Column(Text, nullable=True)
 
 
+class SiteSetting(Base):
+    __tablename__ = "site_settings"
+
+    key = Column(String, primary_key=True)
+    value = Column(Text, nullable=True)
+
+
 class Notification(Base):
     __tablename__ = "notifications"
 

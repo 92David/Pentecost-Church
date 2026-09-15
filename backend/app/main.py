@@ -5,7 +5,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.security import OAuth2PasswordRequestForm
 from sqlalchemy.orm import Session
 
-from .auth import create_access_token, get_current_user, get_password_hash, verify_password
+from .auth import create_access_token, get_current_user, get_password_hash, require_staff, verify_password
+from .cms import ensure_cms, public_settings, router as admin_router
 from .database import get_db
 from .models import (
     Announcement,
@@ -33,6 +34,8 @@ from .schemas import (
 
 
 app = FastAPI(title="Pentecost Church Platform", version="1.0.0")
+ensure_cms()
+app.include_router(admin_router)
 
 app.add_middleware(
     CORSMiddleware,
@@ -41,12 +44,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-
-def require_staff(current_user: User = Depends(get_current_user)) -> User:
-    if current_user.role not in {"admin", "pastor"}:
-        raise HTTPException(status_code=403, detail="Not authorized")
-    return current_user
 
 
 @app.get("/api/health")
@@ -102,6 +99,11 @@ def get_current_user_profile(current_user: User = Depends(get_current_user), db:
         "phone": member.phone if member else None,
         "member_number": member.member_number if member else None,
     }
+
+
+@app.get("/api/site-settings")
+def get_site_settings(db: Session = Depends(get_db)):
+    return public_settings(db)
 
 
 @app.get("/api/sermons")

@@ -1,7 +1,7 @@
 INSERT INTO users (full_name, email, password_hash, role, status) VALUES
-    ('Admin User', 'admin@pentecostchurch.org', '$2b$10$8z8kQ1Q0jzAqQq5O5U7tEu8QF0b2YJm0hXQ3m0pH4lM2lL0k8v0m2', 'admin', 'active'),
-    ('Grace Thompson', 'grace@example.com', '$2b$10$8z8kQ1Q0jzAqQq5O5U7tEu8QF0b2YJm0hXQ3m0pH4lM2lL0k8v0m2', 'member', 'active'),
-    ('Pastor David', 'pastor@example.com', '$2b$10$8z8kQ1Q0jzAqQq5O5U7tEu8QF0b2YJm0hXQ3m0pH4lM2lL0k8v0m2', 'pastor', 'active');
+    ('Admin User', 'admin@pentecostchurch.org', '$2b$12$T.Yzp.wIMRRuvkdAmXtHPOMBMXGNL1UdEyPjqYXffA3jJrzd.i5jS', 'admin', 'active'),
+    ('Grace Thompson', 'grace@example.com', '$2b$12$0DMsvd.kVumQFap9R.aE0eoWaYvkGuw/rTEtcpAvu5On4PdLrpWCy', 'member', 'active'),
+    ('Pastor David', 'pastor@example.com', '$2b$12$0DMsvd.kVumQFap9R.aE0eoWaYvkGuw/rTEtcpAvu5On4PdLrpWCy', 'pastor', 'active');
 
 INSERT INTO members (user_id, phone, address, birthday, member_number, join_date, ministry) VALUES
     (2, '+233 24 000 0000', 'Accra, Ghana', '1995-06-15', 'PCM-001', '2020-01-10', 'Women Ministry'),

@@ -80,13 +80,23 @@ async function fetchFromApi(path, options = {}) {
     headers['Content-Type'] = 'application/json';
   }
 
-  const response = await fetch(`${API_BASE}${path}`, {
-    ...options,
-    headers,
-  });
+  let response;
+  try {
+    response = await fetch(`${API_BASE}${path}`, {
+      ...options,
+      headers,
+    });
+  } catch (error) {
+    throw new Error('Cannot reach the church API. Start it on http://127.0.0.1:8001');
+  }
 
-  const responseText = await response.text();
-  let data = responseText ? JSON.parse(responseText) : null;
+  let data = null;
+  try {
+    const responseText = await response.text();
+    data = responseText ? JSON.parse(responseText) : null;
+  } catch (error) {
+    data = null;
+  }
 
   if (!response.ok) {
     const detail = data?.detail;
@@ -98,17 +108,28 @@ async function fetchFromApi(path, options = {}) {
 }
 
 async function loginToApi(email, password) {
-  const body = new URLSearchParams({ username: email, password }).toString();
+  let response;
 
-  const response = await fetch(`${API_BASE}/api/auth/login`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-    },
-    body,
-  });
+  try {
+    const body = new URLSearchParams({ username: email, password }).toString();
+    response = await fetch(`${API_BASE}/api/auth/login`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body,
+    });
+  } catch (error) {
+    throw new Error('Cannot reach the church API. Start it on http://127.0.0.1:8001');
+  }
 
-  const data = await response.json();
+  let data = null;
+  try {
+    const responseText = await response.text();
+    data = responseText ? JSON.parse(responseText) : null;
+  } catch (error) {
+    data = null;
+  }
 
   if (!response.ok) {
     throw new Error(data?.detail || 'Login failed');
@@ -821,6 +842,9 @@ if (adminLoginForm) {
       return;
     }
 
+    const status = document.getElementById('adminLoginStatus');
+    if (status) status.textContent = 'Signing in...';
+
     try {
       const result = await loginToApi(email, password);
       if (!['admin', 'pastor'].includes(result.user?.role)) {
@@ -833,7 +857,9 @@ if (adminLoginForm) {
       localStorage.setItem('adminEmail', email);
       window.location.href = 'admin-dashboard.html';
     } catch (error) {
-      alert(error.message || 'Invalid admin credentials.');
+      const message = error.message || 'Invalid admin credentials.';
+      if (status) status.textContent = message;
+      alert(message);
     }
   });
 }
@@ -906,6 +932,8 @@ if (adminDashboardPage) {
       return;
     }
 
+    const loadStatus = document.getElementById('adminLoadStatus');
+
     try {
       const profile = await fetchFromApi('/api/users/me');
       if (!['admin', 'pastor'].includes(profile.role)) {
@@ -917,7 +945,13 @@ if (adminDashboardPage) {
       if (adminGreeting) {
         adminGreeting.textContent = `Welcome, ${profile.full_name}.`;
       }
+    } catch (error) {
+      console.error('Failed to verify admin session:', error);
+      window.location.href = 'admin-login.html';
+      return;
+    }
 
+    try {
       const [
         members,
         sermons,
@@ -970,9 +1004,13 @@ if (adminDashboardPage) {
         events,
         prayerRequests,
       });
+
+      if (loadStatus) loadStatus.textContent = '';
     } catch (error) {
       console.error('Failed to load admin dashboard:', error);
-      window.location.href = 'admin-login.html';
+      if (loadStatus) {
+        loadStatus.textContent = error.message || 'Dashboard loaded, but some church records could not be fetched.';
+      }
     }
   }
 
