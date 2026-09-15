@@ -1,5 +1,3 @@
-from contextlib import asynccontextmanager
-from datetime import timedelta
 from typing import Annotated
 
 from fastapi import Depends, FastAPI, HTTPException, Query, status
@@ -16,10 +14,13 @@ from .models import (
     DailyQuote,
     Event,
     GalleryItem,
+    Member,
     Ministry,
+    Notification,
     Offering,
     PrayerRequest,
     Sermon,
+    Service,
     User,
 )
 from .schemas import (
@@ -28,24 +29,24 @@ from .schemas import (
     PrayerRequestCreate,
     SermonCreate,
     UserCreate,
-    UserLogin,
 )
 
 
-@asynccontextmanager
-async def lifespan(app: FastAPI):
-    yield
-
-
-app = FastAPI(title="Pentecost Church Platform", version="1.0.0", lifespan=lifespan)
+app = FastAPI(title="Pentecost Church Platform", version="1.0.0")
 
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
-    allow_credentials=True,
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
+def require_staff(current_user: User = Depends(get_current_user)) -> User:
+    if current_user.role not in {"admin", "pastor"}:
+        raise HTTPException(status_code=403, detail="Not authorized")
+    return current_user
 
 
 @app.get("/api/health")
@@ -63,7 +64,7 @@ def register_user(payload: UserCreate, db: Session = Depends(get_db)):
         full_name=payload.full_name,
         email=payload.email,
         password_hash=get_password_hash(payload.password),
-        role=payload.role,
+        role="member",
         status="active",
     )
     db.add(new_user)
@@ -81,17 +82,25 @@ def login(payload: Annotated[OAuth2PasswordRequestForm, Depends()], db: Session 
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Incorrect email or password")
 
     access_token = create_access_token(data={"sub": user.email})
-    return {"access_token": access_token, "token_type": "bearer", "user": {"id": user.id, "email": user.email, "role": user.role}}
+    return {
+        "access_token": access_token,
+        "token_type": "bearer",
+        "user": {"id": user.id, "email": user.email, "role": user.role, "full_name": user.full_name},
+    }
 
 
 @app.get("/api/users/me")
-def get_current_user_profile(current_user: User = Depends(get_current_user)):
+def get_current_user_profile(current_user: User = Depends(get_current_user), db: Session = Depends(get_db)):
+    member = db.query(Member).filter(Member.user_id == current_user.id).first()
     return {
         "id": current_user.id,
         "full_name": current_user.full_name,
         "email": current_user.email,
         "role": current_user.role,
         "status": current_user.status,
+        "ministry": member.ministry if member else None,
+        "phone": member.phone if member else None,
+        "member_number": member.member_number if member else None,
     }
 
 
@@ -104,23 +113,19 @@ def get_sermons(db: Session = Depends(get_db), category: str | None = Query(defa
     if search:
         query = query.filter(Sermon.title.ilike(f"%{search}%"))
 
-    items = query.order_by(Sermon.sermon_date.desc()).all()
-    return items
+    return query.order_by(Sermon.sermon_date.desc()).all()
 
 
 @app.get("/api/sermons/{sermon_id}")
 def get_sermon(sermon_id: int, db: Session = Depends(get_db)):
-    sermon = db.query(Sermon).filter(Sermon.id == sermon_id).first()
+    sermon = db.query(Sermon).filter(Sermon.id == sermon_id, Sermon.status == "published").first()
     if not sermon:
         raise HTTPException(status_code=404, detail="Sermon not found")
     return sermon
 
 
 @app.post("/api/sermons")
-def create_sermon(payload: SermonCreate, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
-    if current_user.role not in {"admin", "pastor"}:
-        raise HTTPException(status_code=403, detail="Not authorized")
-
+def create_sermon(payload: SermonCreate, db: Session = Depends(get_db), current_user: User = Depends(require_staff)):
     sermon = Sermon(**payload.model_dump())
     db.add(sermon)
     db.commit()
@@ -138,12 +143,22 @@ def get_ministries(db: Session = Depends(get_db)):
     return db.query(Ministry).filter(Ministry.status == "active").all()
 
 
+@app.get("/api/services")
+def get_services(db: Session = Depends(get_db)):
+    return db.query(Service).order_by(Service.id.asc()).all()
+
+
 @app.get("/api/verse-of-the-day")
 def get_verse_of_the_day(db: Session = Depends(get_db)):
-    verse = db.query(BibleVerse).order_by(BibleVerse.id.desc()).first()
+    verse = db.query(BibleVerse).order_by(BibleVerse.verse_date.desc(), BibleVerse.id.desc()).first()
     if not verse:
         raise HTTPException(status_code=404, detail="No verse found")
     return verse
+
+
+@app.get("/api/bible-verses")
+def get_bible_verses(db: Session = Depends(get_db)):
+    return db.query(BibleVerse).order_by(BibleVerse.verse_date.desc(), BibleVerse.id.desc()).all()
 
 
 @app.get("/api/quotes")
@@ -165,6 +180,21 @@ def create_prayer_request(payload: PrayerRequestCreate, db: Session = Depends(ge
     return {"message": "Prayer request submitted successfully", "request_id": request_item.id}
 
 
+@app.get("/api/prayer-requests")
+def list_prayer_requests(db: Session = Depends(get_db), current_user: User = Depends(require_staff)):
+    return db.query(PrayerRequest).order_by(PrayerRequest.id.desc()).all()
+
+
+@app.get("/api/prayer-requests/me")
+def list_my_prayer_requests(current_user: User = Depends(get_current_user), db: Session = Depends(get_db)):
+    return (
+        db.query(PrayerRequest)
+        .filter(PrayerRequest.email == current_user.email)
+        .order_by(PrayerRequest.id.desc())
+        .all()
+    )
+
+
 @app.post("/api/offerings")
 def create_offering(payload: OfferingCreate, db: Session = Depends(get_db)):
     offering = Offering(**payload.model_dump())
@@ -174,9 +204,24 @@ def create_offering(payload: OfferingCreate, db: Session = Depends(get_db)):
     return {"message": "Offering recorded successfully", "offering_id": offering.id}
 
 
+@app.get("/api/offerings")
+def list_offerings(db: Session = Depends(get_db), current_user: User = Depends(require_staff)):
+    return db.query(Offering).order_by(Offering.id.desc()).all()
+
+
+@app.get("/api/offerings/me")
+def list_my_offerings(current_user: User = Depends(get_current_user), db: Session = Depends(get_db)):
+    return db.query(Offering).filter(Offering.email == current_user.email).order_by(Offering.id.desc()).all()
+
+
 @app.post("/api/contacts")
 def create_contact(payload: ContactCreate, db: Session = Depends(get_db)):
-    contact = Contact(**payload.model_dump())
+    data = payload.model_dump(exclude={"subject"})
+    subject = payload.subject.strip() if payload.subject else ""
+    message = data.get("message") or ""
+    if subject:
+        data["message"] = f"{subject}: {message}".strip()
+    contact = Contact(**data)
     db.add(contact)
     db.commit()
     db.refresh(contact)
@@ -189,10 +234,32 @@ def get_announcements(db: Session = Depends(get_db)):
 
 
 @app.get("/api/contacts")
-def get_contacts(db: Session = Depends(get_db)):
+def get_contacts(db: Session = Depends(get_db), current_user: User = Depends(require_staff)):
     return db.query(Contact).order_by(Contact.id.desc()).all()
 
 
 @app.get("/api/notifications")
 def get_notifications(current_user: User = Depends(get_current_user), db: Session = Depends(get_db)):
-    return db.query(Announcement).all()
+    return (
+        db.query(Notification)
+        .filter((Notification.user_id == current_user.id) | (Notification.user_id.is_(None)))
+        .order_by(Notification.id.desc())
+        .all()
+    )
+
+
+@app.get("/api/members")
+def list_members(db: Session = Depends(get_db), current_user: User = Depends(require_staff)):
+    rows = db.query(Member, User).join(User, Member.user_id == User.id).all()
+    return [
+        {
+            "id": member.id,
+            "full_name": user.full_name,
+            "email": user.email,
+            "role": user.role,
+            "phone": member.phone,
+            "ministry": member.ministry,
+            "member_number": member.member_number,
+        }
+        for member, user in rows
+    ]

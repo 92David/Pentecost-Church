@@ -74,4 +74,5 @@ class ContactCreate(BaseModel):
     opening_hours: Optional[str] = None
     sunday_service_times: Optional[str] = None
     map_url: Optional[str] = None
+    subject: Optional[str] = None
     message: Optional[str] = None
